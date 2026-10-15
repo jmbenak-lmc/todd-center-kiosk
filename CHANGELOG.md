@@ -8,6 +8,11 @@ Versions use MAJOR.MINOR.PATCH. The current version shows in the kiosk footer an
 
 When you release a change, update `KIOSK_VERSION`, add an entry here, and start the commit message with the version, for example `v2.0.1: fix room for Financial Aid`.
 
+## v2.2.0 (2026-10-15)
+- Program video moved from the home page to the start screen, lower right, sized as large as it can be without touching the title, subtitle, button, or clock
+- Video plays while the kiosk is idle and pauses while someone is using it; touching it starts the kiosk like anywhere else on the start screen
+- Today's events panel returns to full height on the home page
+
 ## v2.1.1 (2026-10-15)
 - `data.js` always loads fresh, so a new release or a corrections edit can't be held back by the browser cache
 

@@ -21,7 +21,7 @@ const IDLE_SECONDS = 90;
 const HELP_DESK = "TC-1215";
 
 /* ---------- Program video ----------
-   Plays muted on a loop in the lower right of the home page. Touch it to watch full screen.
+   Plays muted on a loop in the lower right of the start screen while the kiosk is idle.
    To change it, upload the new file to the media folder and put its path here.
    Leave the quotes empty ("") to hide the video. */
 const PROMO_VIDEO = "media/LMC_CWE_Programs_Display_1080p_v2.mp4";

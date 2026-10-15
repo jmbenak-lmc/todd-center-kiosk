@@ -176,13 +176,6 @@ main{overflow:hidden;position:relative}
 .homemain .tile{min-height:0}
 .homeside{display:flex;flex-direction:column;gap:clamp(.7rem,min(1.4vw,2.2vh),1.4rem);min-height:0}
 .homeside .events-panel{flex:1 1 auto}
-.promo{position:relative;flex:none;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;cursor:pointer}
-.promo video{width:100%;height:100%;display:block;object-fit:contain;pointer-events:none}
-.promo-hint{position:absolute;right:.6rem;bottom:.6rem;background:rgba(0,0,0,.65);color:#fff;font-weight:700;font-size:clamp(.75rem,1vw,.95rem);padding:.3em .7em;border-radius:999px;pointer-events:none}
-.promo-close{display:none}
-.promo.full{position:fixed;inset:0;z-index:45;border-radius:0;aspect-ratio:auto;cursor:default;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-.promo.full .promo-hint{display:none}
-.promo.full .promo-close{display:block;position:absolute;top:calc(1rem + env(safe-area-inset-top,0px));right:1rem;border:0;border-radius:12px;background:#A8192C;color:#fff;font-weight:800;font-size:clamp(1.2rem,1.9vw,1.8rem);padding:.8rem 1.4rem}
 .events-panel{background:var(--panel);border-radius:14px;border-top:10px solid var(--red);display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .ev-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:clamp(1rem,1.8vw,1.5rem) clamp(1rem,1.8vw,1.5rem) .6rem}
 .ev-head h2{margin:0;font-weight:900;font-size:clamp(1.6rem,2.6vw,2.4rem);line-height:1}
@@ -247,6 +240,9 @@ footer small{color:var(--muted);font-size:clamp(.85rem,1.1vw,1rem);max-width:40c
   padding-bottom:calc(clamp(2rem,6vw,6rem) + env(safe-area-inset-bottom,0px));
 }
 .attract .bar{width:clamp(80px,12vw,180px);height:16px;background:var(--red);margin-bottom:2rem}
+.attract h1,.attract p{width:fit-content}
+.attract-video{position:absolute;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.35);pointer-events:none}
+.attract-video video{width:100%;height:100%;display:block;object-fit:cover}
 .attract h1{margin:0;font-weight:900;font-size:clamp(4rem,13vw,13rem);line-height:.85;letter-spacing:-.03em}
 .attract p{font-size:clamp(1.4rem,2.8vw,2.6rem);margin:2rem 0 0;max-width:24ch;line-height:1.25;font-weight:600}
 .attract .touch{margin-top:clamp(2rem,5vh,4rem);display:inline-flex;align-items:center;gap:1rem;font-size:clamp(1.2rem,2.2vw,2rem);font-weight:800;border:3px solid currentColor;border-radius:999px;padding:1rem 2rem;align-self:flex-start;animation:pulse 2.4s ease-in-out infinite}
@@ -305,11 +301,6 @@ footer small{color:var(--muted);font-size:clamp(.85rem,1.1vw,1rem);max-width:40c
             <div class="ev-head"><h2>Today's events</h2><span id="events-status"></span></div>
             <div class="ev-list" id="events"></div>
           </aside>
-          <div class="promo hidden" id="promo" role="button" aria-label="Program video. Touch to watch full screen.">
-            <video id="promo-video" muted loop playsinline preload="auto" disablepictureinpicture></video>
-            <span class="promo-hint">Touch to watch full screen</span>
-            <button class="promo-close" id="promo-close" aria-label="Close video">Close video</button>
-          </div>
         </div>
       </div>
     </section>
@@ -348,6 +339,7 @@ footer small{color:var(--muted);font-size:clamp(.85rem,1.1vw,1rem);max-width:40c
   <h1>Todd<br>Center</h1>
   <p>Find a classroom, office, or instructor.</p>
   <span class="touch">Touch anywhere to start</span>
+  <div class="attract-video hidden" id="promo"><video id="promo-video" muted loop playsinline preload="auto" disablepictureinpicture></video></div>
 </div>
 
 <script>
@@ -495,25 +487,41 @@ function show(id){
   syncPromo();
 }
 
-/* ---------- Program video (home page, lower right) ---------- */
+/* ---------- Program video (start screen, lower right) ----------
+   Sized as large as possible without touching the title, subtitle, button, or clock. */
 const PROMO_SRC = typeof PROMO_VIDEO === "string" ? PROMO_VIDEO.trim() : "";
+function placePromo(){
+  const att = document.getElementById("attract"), box = document.getElementById("promo");
+  if (!box || box.classList.contains("hidden") || att.classList.contains("hidden")) return;
+  const A = att.getBoundingClientRect(), cs = getComputedStyle(att);
+  const padR = parseFloat(cs.paddingLeft) || 32, padB = parseFloat(cs.paddingBottom) || 32;
+  const gap = Math.max(32, A.width * 0.03);
+  let textRight = 0;
+  att.querySelectorAll(".bar, h1, p, .touch").forEach(el => { textRight = Math.max(textRight, el.getBoundingClientRect().right - A.left); });
+  const clockBottom = att.querySelector(".clockA").getBoundingClientRect().bottom - A.top;
+  const availW = A.width - padR - (textRight + gap);
+  const availH = A.height - padB - (clockBottom + gap);
+  let w = Math.max(0, availW), h = w * 9 / 16;
+  if (h > availH){ h = Math.max(0, availH); w = h * 16 / 9; }
+  box.style.display = w < 240 ? "none" : "";
+  box.style.width = Math.floor(w) + "px"; box.style.height = Math.floor(h) + "px";
+  box.style.right = padR + "px"; box.style.bottom = padB + "px";
+}
 function syncPromo(){
   const box = document.getElementById("promo"), vid = document.getElementById("promo-video");
   if (!box || !PROMO_SRC || box.dataset.failed) return;
-  const homeVisible = !document.getElementById("v-home").classList.contains("hidden");
   const idle = !document.getElementById("attract").classList.contains("hidden");
-  if (!homeVisible || idle) box.classList.remove("full");
-  if (homeVisible && !idle){ const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
+  if (idle){ placePromo(); const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
   else vid.pause();
 }
 (function setupPromo(){
   const box = document.getElementById("promo"), vid = document.getElementById("promo-video");
   if (!PROMO_SRC) return;
   vid.addEventListener("error", () => { box.dataset.failed = "1"; box.classList.add("hidden"); console.warn("Program video could not load:", PROMO_SRC); });
-  vid.addEventListener("loadeddata", () => box.classList.remove("hidden"), {once:true});
+  vid.addEventListener("loadeddata", () => { box.classList.remove("hidden"); placePromo(); syncPromo(); }, {once:true});
+  window.addEventListener("resize", placePromo);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placePromo);
   vid.src = PROMO_SRC;
-  box.addEventListener("click", e => { if (!box.classList.contains("full")) box.classList.add("full"); });
-  document.getElementById("promo-close").addEventListener("click", e => { e.stopPropagation(); box.classList.remove("full"); });
 })();
 function go(state, push=true){
   if (push && current) stack.push(current);
@@ -998,7 +1006,7 @@ setInterval(renderEvents, 60 * 1000);
 
 /* Auto-update: reload when index.html or data.js changes on the server */
 /* Kiosk version: update this and CHANGELOG.md with every release. */
-const KIOSK_VERSION = "2.1.1";
+const KIOSK_VERSION = "2.2.0";
 document.getElementById("kiosk-version").textContent = "v" + KIOSK_VERSION;
 const UPDATE_CHECK_MINUTES = 15;
 let updatePending = false, siteSig = null;
