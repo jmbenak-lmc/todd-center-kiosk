@@ -350,7 +350,10 @@ footer small{color:var(--muted);font-size:clamp(.85rem,1.1vw,1rem);max-width:40c
   <span class="touch">Touch anywhere to start</span>
 </div>
 
-<script src="data.js"></script>
+<script>
+/* Load data.js fresh every time so an edit on GitHub is never hidden by the browser cache. */
+document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
+</script>
 <script>
 if (typeof PLACES === "undefined" || typeof ROOMS === "undefined" || typeof DIRECTORY_FIX === "undefined"){
   document.body.innerHTML = '<div style="font:600 1.6rem/1.5 system-ui,sans-serif;padding:3rem;max-width:40ch">The kiosk could not read <b>data.js</b>. The most recent edit to that file has a typo. Undo it in GitHub (History, then revert) and the kiosk will recover.</div>';
@@ -995,7 +998,7 @@ setInterval(renderEvents, 60 * 1000);
 
 /* Auto-update: reload when index.html or data.js changes on the server */
 /* Kiosk version: update this and CHANGELOG.md with every release. */
-const KIOSK_VERSION = "2.1.0";
+const KIOSK_VERSION = "2.1.1";
 document.getElementById("kiosk-version").textContent = "v" + KIOSK_VERSION;
 const UPDATE_CHECK_MINUTES = 15;
 let updatePending = false, siteSig = null;
