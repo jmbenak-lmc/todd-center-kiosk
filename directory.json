@@ -1,6 +1,6 @@
 {
  "source": "https://www.lakemichigancollege.edu/directory",
- "count": 554,
+ "count": 552,
  "entries": [
   {
    "id": "akoo",
@@ -245,7 +245,7 @@
    "phone": "269-927-6713"
   },
   {
-   "id": "ascrima",
+   "id": "aescrima",
    "name": "Amy Scrima",
    "title": "Faculty, Psychology",
    "dept": "Arts & Sciences Education",
@@ -256,7 +256,7 @@
    "phone": "269-927-8777"
   },
   {
-   "id": "aescrima",
+   "id": "ascrima",
    "name": "Amy Scrima",
    "title": "Faculty, Psychology",
    "dept": "Arts & Sciences Education",
@@ -3281,17 +3281,6 @@
    "phone": "269-927-6701"
   },
   {
-   "id": "kbaptist",
-   "name": "Kelly Baptist",
-   "title": "Generalist, Bertrand Innovation Center",
-   "dept": "Niles Campus",
-   "campus": "Niles Campus",
-   "building": "Niles Campus",
-   "room": "",
-   "email": "kbaptist@lakemichigancollege.edu",
-   "phone": "(269) 695-2995"
-  },
-  {
    "id": "kdailey",
    "name": "Kelsey Dailey",
    "title": "Learning Designer",
@@ -3455,17 +3444,6 @@
    "room": "",
    "email": "klovhoiden@lakemichigancollege.edu",
    "phone": "(269) 927-4556"
-  },
-  {
-   "id": "kkozel",
-   "name": "Kristen Kozel",
-   "title": "Coordinator, Testing and Tutoring Services",
-   "dept": "Learning Assistance & Testing",
-   "campus": "Benton Harbor Campus",
-   "building": "Main Building",
-   "room": "",
-   "email": "kkozel@lakemichigancollege.edu",
-   "phone": ""
   },
   {
    "id": "robinson",
@@ -6097,5 +6075,5 @@
    "phone": "269-927-8133"
   }
  ],
- "updated": "2026-10-17T11:39:07.069Z"
+ "updated": "2026-10-20T12:45:20.581Z"
 }
