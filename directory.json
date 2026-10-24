@@ -366,17 +366,6 @@
    "phone": ""
   },
   {
-   "id": "apastrick",
-   "name": "Anthony Pastrick",
-   "title": "Faculty, Business",
-   "dept": "Business",
-   "campus": "Benton Harbor Campus",
-   "building": "Todd Center",
-   "room": "",
-   "email": "apastrick@lakemichigancollege.edu",
-   "phone": ""
-  },
-  {
    "id": "abynum",
    "name": "Antiown Bynum",
    "title": "Utility",
@@ -4084,6 +4073,17 @@
    "phone": "269-927-8701"
   },
   {
+   "id": "mrainey",
+   "name": "Mathew Rainey",
+   "title": "Network Engineer and Security Manager",
+   "dept": "Information Technologies",
+   "campus": "Benton Harbor Campus",
+   "building": "Main Building",
+   "room": "C-229F",
+   "email": "mrainey@lakemichigancollege.edu",
+   "phone": "269-927-6707"
+  },
+  {
    "id": "mbeaty",
    "name": "Matt Beaty",
    "title": "Adjunct Faculty, English",
@@ -6064,5 +6064,5 @@
    "phone": "269-927-8133"
   }
  ],
- "updated": "2026-10-23T12:39:16.943Z"
+ "updated": "2026-10-24T12:02:06.002Z"
 }
