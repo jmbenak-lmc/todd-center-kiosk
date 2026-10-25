@@ -245,7 +245,7 @@
    "phone": "269-927-6713"
   },
   {
-   "id": "aescrima",
+   "id": "ascrima",
    "name": "Amy Scrima",
    "title": "Faculty, Psychology",
    "dept": "Arts & Sciences Education",
@@ -256,7 +256,7 @@
    "phone": "269-927-8777"
   },
   {
-   "id": "ascrima",
+   "id": "aescrima",
    "name": "Amy Scrima",
    "title": "Faculty, Psychology",
    "dept": "Arts & Sciences Education",
@@ -6064,5 +6064,5 @@
    "phone": "269-927-8133"
   }
  ],
- "updated": "2026-10-24T12:02:06.002Z"
+ "updated": "2026-10-25T12:35:56.314Z"
 }
