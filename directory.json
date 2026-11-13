@@ -1,6 +1,6 @@
 {
  "source": "https://www.lakemichigancollege.edu/directory",
- "count": 550,
+ "count": 548,
  "entries": [
   {
    "id": "akoo",
@@ -705,17 +705,6 @@
    "room": "",
    "email": "bursar@lakemichigancollege.edu",
    "phone": "269-927-8610"
-  },
-  {
-   "id": "vsherwood",
-   "name": "Buzz Sherwood",
-   "title": "Maintenance Technician",
-   "dept": "Facilities Management",
-   "campus": "Benton Harbor Campus",
-   "building": "Main Building",
-   "room": "",
-   "email": "vsherwood@lakemichigancollege.edu",
-   "phone": ""
   },
   {
    "id": "cpauley",
@@ -4238,17 +4227,6 @@
    "phone": "(269) 637-7507 0"
   },
   {
-   "id": "mwagner",
-   "name": "Mia Wagner",
-   "title": "Specialist, Financial Aid",
-   "dept": "Financial Aid",
-   "campus": "Benton Harbor Campus",
-   "building": "Main Building",
-   "room": "",
-   "email": "mwagner@lakemichigancollege.edu",
-   "phone": "(269) 927-8609"
-  },
-  {
    "id": "mdeschaaf",
    "name": "Michael De Schaaf",
    "title": "PT Adjunct Viticulture",
@@ -6053,5 +6031,5 @@
    "phone": "269-927-8133"
   }
  ],
- "updated": "2026-11-11T15:16:51.495Z"
+ "updated": "2026-11-13T15:26:16.633Z"
 }
