@@ -1,6 +1,6 @@
 {
  "source": "https://www.lakemichigancollege.edu/directory",
- "count": 548,
+ "count": 547,
  "entries": [
   {
    "id": "akoo",
@@ -342,17 +342,6 @@
    "room": "B203D",
    "email": "akurtz@lakemichigancollege.edu",
    "phone": "269-927-6197"
-  },
-  {
-   "id": "astrong",
-   "name": "Angela Strong",
-   "title": "Adjunct Faculty, Nursing",
-   "dept": "Health Sciences",
-   "campus": "Benton Harbor Campus",
-   "building": "Main Building",
-   "room": "",
-   "email": "astrong@lakemichigancollege.edu",
-   "phone": ""
   },
   {
    "id": "alaingren",
@@ -6031,5 +6020,5 @@
    "phone": "269-927-8133"
   }
  ],
- "updated": "2026-11-13T15:26:16.633Z"
+ "updated": "2026-11-14T14:11:20.465Z"
 }
